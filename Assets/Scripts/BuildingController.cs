@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class BuildingController : MonoBehaviour
 {
-    [SerializeField] private int _heath;
     [SerializeField] private GameObject _troop;
     private bool _canSpawn = false;
-    private int _healthMax;
 
     void Start()
     {
-        _healthMax = _heath;
         if (_troop)
             StartCoroutine(SpawnTroops());
     }
@@ -20,24 +17,6 @@ public class BuildingController : MonoBehaviour
     {
         if (_troop && _canSpawn)
             StartCoroutine(SpawnTroops());
-    }
-
-    public void Hit(int val)
-    {
-        _heath -= val;
-        if (_heath < 0)
-        {
-            _heath = 0;
-            if (_troop)
-            {
-                if (transform.tag == "Human")
-                    Debug.Log("The Orc Team wins.");
-                else
-                    Debug.Log("The Human Team wins.");
-            }
-            Destroy(gameObject);
-        }
-        Debug.Log(transform.tag + "Unit [" + _heath + "/" + _healthMax + "]HP has been attacked.");
     }
 
     private IEnumerator SpawnTroops()

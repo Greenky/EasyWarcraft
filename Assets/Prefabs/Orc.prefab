@@ -18,9 +18,10 @@ GameObject:
   - component: {fileID: 8742872608060899538}
   - component: {fileID: 8742872608060899497}
   - component: {fileID: 8742872608060899498}
-  m_Layer: 0
+  - component: {fileID: 4111191060156727498}
+  m_Layer: 9
   m_Name: Orc
-  m_TagString: Player
+  m_TagString: Orc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,6 +126,7 @@ MonoBehaviour:
   - {fileID: 8742872608060899536}
   - {fileID: 8742872608060899537}
   - {fileID: 8742872608060899538}
+  _canMove: 1
 --- !u!82 &8742872608060899543
 AudioSource:
   m_ObjectHideFlags: 0
@@ -546,3 +548,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4111191060156727498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8742872608060899539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa33fa08fe05844181c12b72d363933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heath: 40
+  _hp: {fileID: 2136579051887031156, guid: 94f2dc5e85873ee478395726c50d9127, type: 3}
