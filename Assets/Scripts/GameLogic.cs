@@ -26,7 +26,6 @@ public class GameLogic : MonoBehaviour
 				}
 				else if (hit.transform.tag == "Orc" && Bots.Count != 0)
 				{
-					Debug.Log("ork");
 					foreach (var bot in Bots)
 						bot.Attack(hit.transform);
 				}

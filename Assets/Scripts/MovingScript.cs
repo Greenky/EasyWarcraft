@@ -23,10 +23,7 @@ public class MovingScript : MonoBehaviour
 	{
 		Vector2 pos = transform.position;
 		if (pos != _targetPos && _canMove)
-		{
-			Debug.Log("Moving");
 			transform.position = Vector2.MoveTowards(transform.position, _targetPos, _speed * Time.deltaTime);
-		}
 		else
 			_animator.SetBool("Walking", false);
 
@@ -37,7 +34,6 @@ public class MovingScript : MonoBehaviour
 
 	public void MoveTo(Vector2 target)
 	{
-		Debug.Log("Moving");
 		_audio[Random.Range(0, 4)].Play();
 		_enemy = null;
 		_canMove = true;
@@ -70,6 +66,8 @@ public class MovingScript : MonoBehaviour
 			_canMove = false;
 			StartCoroutine(AttakingEvent());
 		}
+		else if (transform.tag == "Orc" && collision.collider.tag == "Human")
+			Attack(collision.collider.transform);
 	}
 
 
@@ -85,10 +83,9 @@ public class MovingScript : MonoBehaviour
 			if (transform.tag == "Human")
 				hit = Physics2D.Raycast(transform.position, _targetPos - pos, 1, 1 << 9);
 			else
-				hit = Physics2D.Raycast(transform.position, _targetPos - pos);
+				hit = Physics2D.Raycast(transform.position, _targetPos - pos, 1, 1 << 8);
 			if (hit.collider != null && hit.collider.transform == _enemy)
 			{
-				Debug.Log(hit.collider.name);
 				StartCoroutine(AttakingEvent());
 			}
 			else

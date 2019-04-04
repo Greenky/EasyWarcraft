@@ -561,4 +561,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heath: 40
+  _annimator: {fileID: 8742872608060899541}
   _hp: {fileID: 2136579051887031156, guid: 94f2dc5e85873ee478395726c50d9127, type: 3}
