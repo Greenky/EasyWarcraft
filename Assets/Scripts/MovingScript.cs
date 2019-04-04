@@ -23,7 +23,10 @@ public class MovingScript : MonoBehaviour
 	{
 		Vector2 pos = transform.position;
 		if (pos != _targetPos && _canMove)
+		{
+			Debug.Log("Moving");
 			transform.position = Vector2.MoveTowards(transform.position, _targetPos, _speed * Time.deltaTime);
+		}
 		else
 			_animator.SetBool("Walking", false);
 
@@ -34,6 +37,7 @@ public class MovingScript : MonoBehaviour
 
 	public void MoveTo(Vector2 target)
 	{
+		Debug.Log("Moving");
 		_audio[Random.Range(0, 4)].Play();
 		_enemy = null;
 		_canMove = true;
@@ -77,9 +81,14 @@ public class MovingScript : MonoBehaviour
 		{
 			_enemy.GetComponent<HealthManager>().Hit(10);
 			Vector2 pos = transform.position;
-			RaycastHit2D hit = Physics2D.Raycast(transform.position, _targetPos - pos, 1, 1 << 9);
+			RaycastHit2D hit;
+			if (transform.tag == "Human")
+				hit = Physics2D.Raycast(transform.position, _targetPos - pos, 1, 1 << 9);
+			else
+				hit = Physics2D.Raycast(transform.position, _targetPos - pos);
 			if (hit.collider != null && hit.collider.transform == _enemy)
 			{
+				Debug.Log(hit.collider.name);
 				StartCoroutine(AttakingEvent());
 			}
 			else
